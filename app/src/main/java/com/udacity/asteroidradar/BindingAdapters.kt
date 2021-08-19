@@ -39,3 +39,25 @@ fun bindTextViewToDisplayVelocity(textView: TextView, number: Double) {
     val context = textView.context
     textView.text = String.format(context.getString(R.string.km_s_unit_format), number)
 }
+
+@BindingAdapter("littleFaceImage")
+fun ImageView.setLittleFaceImage(item: Asteroid?) {
+    item?.let {
+        setImageResource(if (item.isPotentiallyHazardous) R.drawable.ic_status_potentially_hazardous else R.drawable.ic_status_normal)
+    }
+
+}
+
+@BindingAdapter("codenameText")
+fun TextView.setCodenameText(item: Asteroid?) {
+    item?.let {
+        text = item.codename
+    }
+}
+
+@BindingAdapter("closeApproachDate")
+fun TextView.setCloseApproachDate(item: Asteroid?) {
+    item?.let {
+        text = item.closeApproachDate
+    }
+}
